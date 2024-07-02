@@ -1,82 +1,31 @@
 @font-face {
-  font-family: "PKMN RBYGSC";
-  src: url("fonts/PKMN RBYGSC.tff") format("truetype");
+  font-family: 'PKMN RBYGSC';
+  src: url('fonts/PKMN RBYGSC.ttf') format('truetype');
 }
 
-body {
-  background-color: #0047ab;
-}
-
-#header {
+.header-bar {
   background-color: #525252;
-  width: 100%;
   height: 50px;
-  position: fixed;
-  top: 0;
-  left: 0;
+}
+body {
+  background-color: #0047ab; /* Dark Cobalt Blue */
 }
 
-#paper {
-  background-color: #fdf5e6; /* Your chosen color */
-  width: 80%; /* Adjust this to change the width of the paper */
-  margin: 60px auto; /* 60px top and bottom margin to give space under the header, and auto left and right margin to center the paper */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Adjust this to change the shadow effect */
-  border-radius: 10px; /* Adjust this to change the roundness of the paper corners */
-  padding: 20px; /* Added padding */
-  display: flex; /* Added to use flexbox */
-  align-items: flex-start; /* Positions the items at the top */
+.paper {
+  width: 80%;
+  background-color: #fdf5e6; /* Grungy Yellow */
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
+  margin: 20px auto;
+  padding: 20px;
 }
 
-.logo {
-  margin-right: 20px; /* Adds some space between the logo and the input box */
-}
-
-.name-input {
-  width: 50%;
-  font-family: "PKMN RBYGSC", sans-serif;
+.input-box {
+  font-family: 'PKMN RBYGSC', sans-serif;
   font-size: 28px;
+  margin-left: 10px;
   border: 2px solid black;
-  border-bottom: 3px solid black;
-  background: transparent; /* Makes the input box background transparent */
-  margin-top: 40px; /* Adjust this to move the box down */
-}
-.select-menu {
-  width: 50%;
-  font-family: "PKMN RBYGSC", sans-serif;
-  font-size: 28px;
-  border: 2px solid black;
-  background: transparent; /* Makes the dropdown menu background transparent */
-  margin-top: 40px; /* Adjust this to move the box down */
-  margin-left: 10px; /* Adds some space between the name box and the dropdown menu */
+  border-bottom-width: 3px;
+  background-color: transparent;
+  width: 20%;
 }
 
-.input-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.input-boxes {
-  display: flex;
-}
-
-.hp-bar {
-  position: relative;
-  width: 100%; /* Adjust as needed */
-  height: 200px; /* Adjust as needed */
-  margin-top: 2%;
-}
-
-.hp-bar img {
-  width: 100%;
-  height: auto;
-}
-
-.progress-bar {
-  position: absolute;
-  top: 28%; /* Adjust these values to position the progress bar */
-  left: 31.3%; /* Adjust these values to position the progress bar */
-  width: 53.3%; /* Adjust as needed */
-  height: 20px; /* Adjust as needed */
-  background-color: #00ff00; /* Change to desired color */
-}
