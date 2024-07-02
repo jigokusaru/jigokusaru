@@ -1,0 +1,52 @@
+@font-face {
+  font-family: 'PKMN RBYGSC';
+  src: url('fonts/PKMN RBYGSC.tff') format('truetype');
+}
+
+body {
+  background-color: #0047AB;
+}
+
+#header {
+  background-color: #525252;
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+#paper {
+  background-color: #FDF5E6; /* Your chosen color */
+  width: 80%; /* Adjust this to change the width of the paper */
+  margin: 60px auto; /* 60px top and bottom margin to give space under the header, and auto left and right margin to center the paper */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Adjust this to change the shadow effect */
+  border-radius: 10px; /* Adjust this to change the roundness of the paper corners */
+  padding: 20px; /* Added padding */
+  display: flex; /* Added to use flexbox */
+  align-items: flex-start; /* Positions the items at the top */
+}
+
+.logo {
+  margin-right: 20px; /* Adds some space between the logo and the input box */
+}
+
+.name-input {
+  width: 20%;
+  font-family: 'PKMN RBYGSC', sans-serif;
+  font-size: 24px;
+  border: 2px solid black;
+  border-bottom: 3px solid black;
+  background: transparent; /* Makes the input box background transparent */
+  margin-top: 40px; /* Adjust this to move the box down */
+}
+.select-menu {
+  width: 20%;
+  font-family: 'PKMN RBYGSC', sans-serif;
+  font-size: 24px;
+  border: 2px solid black;
+  background: transparent; /* Makes the dropdown menu background transparent */
+  margin-top: 40px; /* Adjust this to move the box down */
+  margin-left: 20px; /* Adds some space between the name box and the dropdown menu */
+}
+
