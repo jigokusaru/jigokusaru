@@ -1,31 +1,115 @@
 @font-face {
   font-family: 'PKMN RBYGSC';
-  src: url('fonts/PKMN RBYGSC.ttf') format('truetype');
+  src: url('../fonts/PKMN RBYGSC.ttf') format('truetype');
 }
 
-.header-bar {
-  background-color: #525252;
-  height: 50px;
-}
 body {
-  background-color: #0047ab; /* Dark Cobalt Blue */
+  margin: 0;
+  background-color: #0047AB; /* Dark cobalt blue */
+  font-family: 'PKMN RBYGSC', sans-serif;
+}
+
+header {
+  background-color: #333; /* Darker gray background */
+  color: white; /* Text color for better contrast */
+  padding: 1em 2em; /* Padding for header content */
+  width: 100%; /* Stretches across the entire page */
+  position: fixed; /* Stays fixed at the top of the page */
+  top: 0; /* Positions the header at the top */
+  box-sizing: border-box; /* Ensures padding is included in width */
+  height: 3em; /* Sets the height of the header to 3em */
 }
 
 .paper {
-  width: 80%;
-  background-color: #fdf5e6; /* Grungy Yellow */
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
-  margin: 20px auto;
-  padding: 20px;
+  background-color: #ead1ac; /* D&D paper-like yellow */
+  width: 80%; /* 80% of the page width */
+  margin: 3% auto; /* Center the element horizontally, 3% top margin */
+  padding: 2em; /* Padding relative to font size */
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.4); /* Strong shadow effect */
+  border-radius: 0.2em; /* Subtle rounded corners with em unit */
+  display: flex; /* Flex container for content */
+  flex-direction: column; /* Stack elements vertically */
 }
 
-.input-box {
+.content {
+  display: flex; /* Flex container for logo and input-container */
+  align-items: flex-start; /* Align items to the top */
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column; /* Stack inputs and HP bar vertically */
+  margin-left: 1em; /* Add margin to separate from logo */
+  flex-grow: 1; /* Allow container to grow and take available space */
+}
+
+.inputs {
+  margin-top: 3em;
+  display: flex; /* Flex container for input elements */
+  flex-direction: row; /* Arrange elements horizontally in a row */
+  margin-bottom: 1em; /* Space between inputs and HP bar */
+}
+
+.inputs input,
+.inputs select {
+  border: 2px solid #000; /* Consistent border for all elements */
+  border-bottom: 3px solid #000; /* Thicker bottom border */
+  padding: 0.5em; /* Padding for input fields */
   font-family: 'PKMN RBYGSC', sans-serif;
-  font-size: 28px;
-  margin-left: 10px;
-  border: 2px solid black;
-  border-bottom-width: 3px;
-  background-color: transparent;
-  width: 20%;
+  width: calc(30% - 2em); /* Use 30% of the width, accounting for margins */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  height: auto; /* Let the height adjust based on the content */
+  margin-right: 1em; /* Add space between input elements */
 }
 
+.inputs #varient {
+  display: none; /* Hide the variant select box */
+}
+
+.hp-bar-container {
+  position: relative;
+  width: 70%;
+  height: 6em;
+  margin-top: 1em;
+}
+
+.hp-bar {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.progress-bar {
+  position: absolute;
+  top: 40%; /* Adjust vertically as needed */
+  left: 31.4%; /* Adjust horizontally as needed */
+  height: 10%; /* Adjust height of the progress bar */
+  width: 53.2%; /* Adjust the width based on progress */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none; /* This removes the border */
+}
+
+/* This will make the bar transparent */
+progress::-webkit-progress-bar {
+  background-color: transparent;
+}
+
+progress::-moz-progress-bar {
+  background-color: transparent;
+}
+
+/* This will make the progress part green */
+progress::-webkit-progress-value {
+  background-color: #FFAF00;
+}
+
+progress::-moz-progress-bar {
+  background-color: #FFAF00;
+}
+
+/* Firefox specific styles */
+progress {
+  background-color: transparent;
+}

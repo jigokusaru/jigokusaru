@@ -2,31 +2,32 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokemon: Dungeons and Dragonites</title>
     <link rel="stylesheet" href="css/styles.css" />
-    <title>Your Project Title</title>
   </head>
   <body>
-    <div class="header-bar"></div>
+    <header></header>
     <div class="paper">
-      <img src="images/dndlogo.png" class="logo" alt="DnD Logo" />
-      <input type="text" id="name-input" class="input-box" placeholder="Name">
+      <div class="content">
+        <img src="images/dndlogo.png" alt="D&D Logo" />
+        <div class="input-container">
+          <div class="inputs">
+            <input type="text" placeholder="Name" />
+            <select id="species">
+              <option value="" disabled selected>Select A Pokémon</option>
+            </select>
+            <select id="varient">
+              <option value="" disabled selected>Select a Varient</option>
+            </select>
+          </div>
+          <div class="hp-bar-container">
+            <img src="images/HPBar.png" alt="HP Bar" class="hp-bar" />
+            <progress class="progress-bar" value="50" max="100"></progress>
+          </div>
+        </div>
+      </div>
     </div>
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-xrjEj/aKU6Z4Uhye5m+u6T4n8uZgvtOZ6B5zF16Jzj2F5Ko"
-      crossorigin="anonymous"
-    ></script>
+    <script src="js/script.js"></script>
   </body>
 </html>
