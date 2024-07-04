@@ -4,36 +4,53 @@ $(document).ready(function () {
   $("#species").select2();
 });
 
-document.getElementById("IVs").addEventListener("input", function (e) {
-  var max = parseInt(e.target.max);
-  var min = parseInt(e.target.min);
-  var value = parseInt(e.target.value);
+var elements = document.getElementsByClassName("IVs");
+for (var i = 0; i < elements.length; i++) {
+  elements[i].addEventListener("input", function (e) {
+    var max = parseInt(e.target.max);
+    var min = parseInt(e.target.min);
+    var value = parseInt(e.target.value);
 
-  if (value > max) {
-    e.target.value = max;
-  }
-  if (value < min) {
-    e.target.value = min;
-  }
-});
+    if (value > max) {
+      e.target.value = max;
+    }
+    if (value < min) {
+      e.target.value = min;
+    }
+  });
+}
 
-document.getElementById("EVs").addEventListener("input", function (e) {
-  var max = parseInt(e.target.max);
-  var min = parseInt(e.target.min);
-  var value = parseInt(e.target.value);
+var elements = document.getElementsByClassName("EVs");
+for (var i = 0; i < elements.length; i++) {
+  elements[i].addEventListener("input", function (e) {
+    var max = parseInt(e.target.max);
+    var min = parseInt(e.target.min);
+    var value = parseInt(e.target.value);
 
-  if (value > max) {
-    e.target.value = max;
-  }
-  if (value < min) {
-    e.target.value = min;
-  }
-});
+    if (value > max) {
+      e.target.value = max;
+    }
+    if (value < min) {
+      e.target.value = min;
+    }
+  });
+}
 
 async function fetchAllPokemonSpecies() {
   try {
     const response = await P.getPokemonSpeciesList();
-    const speciesList = response.results.map((species) => species.name);
+    const speciesList = await Promise.all(
+      response.results.map(async (species) => {
+        const speciesData = await P.getPokemonSpeciesByName(species.name);
+        const speciesEnglishName = speciesData.names.find(
+          (name) => name.language.name === "en"
+        ).name;
+        return {
+          originalName: species.name,
+          englishName: speciesEnglishName,
+        };
+      })
+    );
     return speciesList;
   } catch (error) {
     console.error("There was an ERROR: ", error);
@@ -43,6 +60,9 @@ async function fetchAllPokemonSpecies() {
 async function fetchPokemonVarieties(speciesName) {
   try {
     const response = await P.getPokemonSpeciesByName(speciesName);
+    const speciesEnglishName = response.names.find(
+      (name) => name.language.name === "en"
+    ).name;
     const varieties = response.varieties
       .filter((variety) => !variety.pokemon.name.includes("gmax")) // Exclude GMax forms
       .filter((variety) => !variety.pokemon.name.includes("-male")) // Exclude male forms
@@ -50,10 +70,10 @@ async function fetchPokemonVarieties(speciesName) {
       .map((variety) => {
         let nameParts = variety.pokemon.name.split("-");
         // If the Pokémon has a form, return the form name
-        if (nameParts.length > 1) {
+        if (nameParts.length > 1 && nameParts[0] === speciesName) {
           return nameParts.slice(1).join("-"); // Return the form name
         } else {
-          return nameParts[0]; // Return the species name
+          return speciesEnglishName; // Return the English name of the species
         }
       });
     return varieties;
@@ -68,8 +88,8 @@ window.onload = function () {
   fetchAllPokemonSpecies().then((speciesList) => {
     for (let species of speciesList) {
       let option = document.createElement("option");
-      option.value = species;
-      option.text = species;
+      option.value = species.originalName;
+      option.text = species.englishName;
       selectElement.add(option);
     }
   });

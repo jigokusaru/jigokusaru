@@ -41,8 +41,8 @@ header {
   width: 100% !important;
   box-sizing: content-box !important;
   height: auto !important;
-  margin-right: 1em!important;
-  background-color: white!important;
+  margin-right: 1em !important;
+  background-color: white !important;
 }
 
 .select2-dropdown {
@@ -237,7 +237,8 @@ progress {
   font-size: 1.5em;
 }
 
-.textbox, .input-field {
+.textbox,
+.input-field {
   position: absolute;
   border: none;
   background: transparent;
@@ -246,7 +247,8 @@ progress {
   font-family: "PKMN RBYGSC", sans-serif; /* Set the font */
   text-align: center;
 }
-.textbox:focus, .input-field:focus {
+.textbox:focus,
+.input-field:focus {
   outline: none;
 }
 
@@ -285,13 +287,14 @@ progress {
   height: 50%;
 }
 
-input[type='number'] {
+input[type="number"] {
   -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 /* For Chrome, Safari, Edge, Opera */
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
