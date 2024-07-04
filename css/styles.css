@@ -1,12 +1,12 @@
 @font-face {
-  font-family: 'PKMN RBYGSC';
-  src: url('../fonts/PKMN RBYGSC.ttf') format('truetype');
+  font-family: "PKMN RBYGSC";
+  src: url("../fonts/PKMN RBYGSC.ttf") format("truetype");
 }
 
 body {
   margin: 0;
-  background-color: #0047AB; /* Dark cobalt blue */
-  font-family: 'PKMN RBYGSC', sans-serif;
+  background-color: #0047ab; /* Dark cobalt blue */
+  font-family: "PKMN RBYGSC", sans-serif;
 }
 
 header {
@@ -18,6 +18,7 @@ header {
   top: 0; /* Positions the header at the top */
   box-sizing: border-box; /* Ensures padding is included in width */
   height: 3em; /* Sets the height of the header to 3em */
+  z-index: 9999;
 }
 
 .paper {
@@ -31,7 +32,36 @@ header {
   flex-direction: column; /* Stack elements vertically */
 }
 
+.select2-container .select2-selection--single {
+  border: 2px solid #000 !important;
+  border-bottom: 3px solid #000 !important;
+  padding: 0.5em !important;
+  font-family: "PKMN RBYGSC", sans-serif;
+  font-size: 1.5em !important;
+  width: 100% !important;
+  box-sizing: content-box !important;
+  height: auto !important;
+  margin-right: 1em!important;
+  background-color: white!important;
+}
+
+.select2-dropdown {
+  border: 2px solid #000 !important;
+  width: 19.4em !important;
+}
+
+.select2-results__option {
+  padding: 0.5em !important;
+  font-family: "PKMN RBYGSC", sans-serif;
+  font-size: 1.5em !important;
+}
+
 .content {
+  display: flex;
+  flex-direction: column; /* Stack top-row and pokeball-shapes vertically */
+}
+
+.top-row {
   display: flex; /* Flex container for logo and input-container */
   align-items: flex-start; /* Align items to the top */
 }
@@ -47,7 +77,7 @@ header {
   margin-top: 3em;
   display: flex; /* Flex container for input elements */
   flex-direction: row; /* Arrange elements horizontally in a row */
-  margin-bottom: 1em; /* Space between inputs and HP bar */
+  margin-bottom: 0.5em; /* Space between inputs and HP bar */
 }
 
 .inputs input,
@@ -55,22 +85,25 @@ header {
   border: 2px solid #000; /* Consistent border for all elements */
   border-bottom: 3px solid #000; /* Thicker bottom border */
   padding: 0.5em; /* Padding for input fields */
-  font-family: 'PKMN RBYGSC', sans-serif;
+  font-family: "PKMN RBYGSC", sans-serif;
+  font-size: 1.5em;
   width: calc(30% - 2em); /* Use 30% of the width, accounting for margins */
   box-sizing: border-box; /* Include padding and border in the element's total width and height */
   height: auto; /* Let the height adjust based on the content */
   margin-right: 1em; /* Add space between input elements */
+  background-color: white; /* Set background to transparent */
 }
 
 .inputs #varient {
   display: none; /* Hide the variant select box */
+  margin-left: 2em;
 }
 
 .hp-bar-container {
   position: relative;
   width: 70%;
   height: 6em;
-  margin-top: 1em;
+  margin-top: 0.5em;
 }
 
 .hp-bar {
@@ -102,14 +135,163 @@ progress::-moz-progress-bar {
 
 /* This will make the progress part green */
 progress::-webkit-progress-value {
-  background-color: #FFAF00;
+  background-color: #ffaf00;
 }
 
 progress::-moz-progress-bar {
-  background-color: #FFAF00;
+  background-color: #ffaf00;
 }
 
 /* Firefox specific styles */
 progress {
   background-color: transparent;
+}
+
+.pokeball-shapes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 2em; /* Adjust margin as needed */
+  gap: 5em;
+  margin-bottom: 2em;
+}
+
+.pokeball {
+  position: relative;
+  width: 10em; /* Adjust size as needed */
+  height: 10em; /* Adjust size as needed */
+  background-color: white; /* White color for the entire circle */
+  border: 3px solid black;
+  border-radius: 50%; /* Makes the shape round */
+  margin: 0 1em; /* Adjust spacing between shapes */
+}
+
+.pokeball .center-circle {
+  width: 4em; /* Adjust size of inner circle */
+  height: 4em; /* Adjust size of inner circle */
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 50%; /* Makes it a circle */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1; /* Ensure it's above other elements */
+}
+
+.pokeball .center-line {
+  position: absolute;
+  background-color: black;
+  height: 3px; /* Adjust thickness of center line */
+  width: 100%; /* Adjust width of center line */
+  top: 50%;
+  left: 0;
+}
+.pokeball .center-line.vertical {
+  position: absolute;
+  background-color: black;
+  width: 3px; /* Adjust thickness of vertical line */
+  height: 50%; /* Adjust height of vertical line */
+  bottom: 50%; /* Starts from the bottom center */
+  left: 50%;
+  transform: translateX(-50%);
+}
+.label {
+  position: absolute;
+  color: black;
+  font-size: 10px;
+  text-align: center;
+}
+
+.top {
+  top: -25%; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5em;
+}
+
+.middle {
+  position: relative;
+  top: 80%; /* Adjust as needed */
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bottom-left {
+  transform: rotate(45deg);
+  bottom: -0.5em; /* Adjust as needed */
+  left: -1em; /* Adjust as needed */
+  font-size: 1.5em;
+}
+
+.bottom-right {
+  transform: rotate(-45deg);
+  bottom: -0.5em; /* Adjust as needed */
+  right: -1em; /* Adjust as needed */
+  font-size: 1.5em;
+}
+.stat {
+  bottom: -1.5em; /* Adjust as needed */
+  right: 0;
+  left: 0; /* Adjust as needed */
+  font-size: 1.5em;
+}
+
+.textbox, .input-field {
+  position: absolute;
+  border: none;
+  background: transparent;
+  overflow: hidden;
+  resize: none;
+  font-family: "PKMN RBYGSC", sans-serif; /* Set the font */
+  text-align: center;
+}
+.textbox:focus, .input-field:focus {
+  outline: none;
+}
+
+.textbox.top-half {
+  top: 0.5em;
+  left: 0em;
+  width: 100%;
+  height: 50%;
+  font-size: 1.5em;
+}
+
+.textbox.center-circle {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  top: 50%;
+  left: 50%;
+  width: 30%; /* Adjust as needed */
+  height: 30%; /* Adjust as needed */
+  transform: translate(-50%, -50%);
+  padding-top: 2em;
+  font-size: 0.9em;
+}
+
+.input-field.bottom-left {
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 50%;
+}
+
+.input-field.bottom-right {
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 50%;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/* For Chrome, Safari, Edge, Opera */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

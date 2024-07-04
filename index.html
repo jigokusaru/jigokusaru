@@ -4,30 +4,198 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokemon: Dungeons and Dragonites</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <header></header>
     <div class="paper">
       <div class="content">
-        <img src="images/dndlogo.png" alt="D&D Logo" />
-        <div class="input-container">
-          <div class="inputs">
-            <input type="text" placeholder="Name" />
-            <select id="species">
-              <option value="" disabled selected>Select A Pokémon</option>
-            </select>
-            <select id="varient">
-              <option value="" disabled selected>Select a Varient</option>
-            </select>
+        <div class="top-row">
+          <img src="images/dndlogo.png" alt="D&D Logo" />
+          <div class="input-container">
+            <div class="inputs">
+              <input type="text" placeholder="Name" />
+              <select id="species">
+                <option value="" disabled selected>Select A Pokémon</option>
+              </select>
+              <select id="varient">
+                <option value="" disabled selected>Select a Variant</option>
+              </select>
+            </div>
+            <div class="hp-bar-container">
+              <img src="images/HPbar.png" alt="HP Bar" class="hp-bar" />
+              <progress class="progress-bar" value="50" max="100"></progress>
+            </div>
           </div>
-          <div class="hp-bar-container">
-            <img src="images/HPbar.png" alt="HP Bar" class="hp-bar" />
-            <progress class="progress-bar" value="50" max="100"></progress>
+        </div>
+        <div class="pokeball-shapes">
+          <div class="pokeball" id="HP">
+            <div class="label top">Total</div>
+            <div class="center-line horizontal"></div>
+            <div class="center-circle">
+              <div class="label middle">Base</div>
+            </div>
+            <div class="center-line vertical"></div>
+            <div class="label bottom-left">IVs</div>
+            <div class="label bottom-right">EVs</div>
+            <div class="label stat">HP</div>
+            <textarea class="textbox top-half hp total" readonly></textarea>
+            <textarea class="textbox center-circle hp base" readonly></textarea>
+            <input
+              id="IVs"
+              type="number"
+              min="0"
+              max="252"
+              class="input-field bottom-left"
+            />
+            <input
+              id="EVs"
+              type="number"
+              min="0"
+              max="31"
+              class="input-field bottom-right"
+            />
+          </div>
+          <div class="pokeball">
+            <div class="label top">Total</div>
+            <div class="center-line horizontal"></div>
+            <div class="center-circle">
+              <div class="label middle">Base</div>
+            </div>
+            <div class="center-line vertical"></div>
+            <div class="label bottom-left">IVs</div>
+            <div class="label bottom-right">EVs</div>
+            <textarea class="textbox top-half" readonly></textarea>
+            <textarea class="textbox center-circle" readonly></textarea>
+            <input
+              id="IVs"
+              type="number"
+              min="0"
+              max="252"
+              class="input-field bottom-left"
+            />
+            <input
+              id="EVs"
+              type="number"
+              min="0"
+              max="31"
+              class="input-field bottom-right"
+            />
+          </div>
+          <div class="pokeball">
+            <div class="label top">Total</div>
+            <div class="center-line horizontal"></div>
+            <div class="center-circle">
+              <div class="label middle">Base</div>
+            </div>
+            <div class="center-line vertical"></div>
+            <div class="label bottom-left">IVs</div>
+            <div class="label bottom-right">EVs</div>
+            <textarea class="textbox top-half" readonly></textarea>
+            <textarea class="textbox center-circle" readonly></textarea>
+            <input
+              id="IVs"
+              type="number"
+              min="0"
+              max="252"
+              class="input-field bottom-left"
+            />
+            <input
+              id="EVs"
+              type="number"
+              min="0"
+              max="31"
+              class="input-field bottom-right"
+            />
+          </div>
+          <div class="pokeball">
+            <div class="label top">Total</div>
+            <div class="center-line horizontal"></div>
+            <div class="center-circle">
+              <div class="label middle">Base</div>
+            </div>
+            <div class="center-line vertical"></div>
+            <div class="label bottom-left">IVs</div>
+            <div class="label bottom-right">EVs</div>
+            <textarea class="textbox top-half" readonly></textarea>
+            <textarea class="textbox center-circle" readonly></textarea>
+            <input
+              id="IVs"
+              type="number"
+              min="0"
+              max="252"
+              class="input-field bottom-left"
+            />
+            <input
+              id="EVs"
+              type="number"
+              min="0"
+              max="31"
+              class="input-field bottom-right"
+            />
+          </div>
+          <div class="pokeball">
+            <div class="label top">Total</div>
+            <div class="center-line horizontal"></div>
+            <div class="center-circle">
+              <div class="label middle">Base</div>
+            </div>
+            <div class="center-line vertical"></div>
+            <div class="label bottom-left">IVs</div>
+            <div class="label bottom-right">EVs</div>
+            <textarea class="textbox top-half" readonly></textarea>
+            <textarea class="textbox center-circle" readonly></textarea>
+            <input
+              id="IVs"
+              type="number"
+              min="0"
+              max="252"
+              class="input-field bottom-left"
+            />
+            <input
+              id="EVs"
+              type="number"
+              min="0"
+              max="31"
+              class="input-field bottom-right"
+            />
+          </div>
+          <div class="pokeball">
+            <div class="label top">Total</div>
+            <div class="center-line horizontal"></div>
+            <div class="center-circle">
+              <div class="label middle">Base</div>
+            </div>
+            <div class="center-line vertical"></div>
+            <div class="label bottom-left">IVs</div>
+            <div class="label bottom-right">EVs</div>
+            <textarea class="textbox top-half" readonly></textarea>
+            <textarea class="textbox center-circle" readonly></textarea>
+            <input
+              id="IVs"
+              type="number"
+              min="0"
+              max="252"
+              class="input-field bottom-left"
+            />
+            <input
+              id="EVs"
+              type="number"
+              min="0"
+              max="31"
+              class="input-field bottom-right"
+            />
           </div>
         </div>
       </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>
