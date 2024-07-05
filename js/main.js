@@ -1,7 +1,19 @@
 // main.js
-import { P, fetchPokemonSpeciesBatch, addSpeciesToDropdown, fetchPokemonVarieties,fetchAndDisplayBaseStats,fetchNatures,addNaturesToDropdown } from './pokedexData.js';
-import { formatOption, handleInputEvents, handleBlurEvents} from './domManipulation.js';
-import { calculateTotal } from './statCalculations.js';
+import {
+  P,
+  fetchPokemonSpeciesBatch,
+  addSpeciesToDropdown,
+  fetchPokemonVarieties,
+  fetchAndDisplayBaseStats,
+  fetchNatures,
+  addNaturesToDropdown,
+} from "./pokedexData.js";
+import {
+  formatOption,
+  handleInputEvents,
+  handleBlurEvents,
+} from "./domManipulation.js";
+import { calculateTotal } from "./statCalculations.js";
 
 $(document).ready(function () {
   $("#species").select2({ selectionCssClass: "species" });
@@ -26,6 +38,7 @@ window.onload = function () {
   }, 5000);
 };
 
+
 $("#species").on("change", async function () {
   const speciesName = this.value;
   const variantSelectElement = document.getElementById("variant");
@@ -45,7 +58,7 @@ $("#species").on("change", async function () {
       variantSelectElement.style.display = "none";
     }
     // Fetch and display base stats for the main form of the species
-    fetchAndDisplayBaseStats(speciesName);
+    fetchAndDisplayBaseStats(speciesName)
   });
 
   const maleGenderInfo = await P.getGender("male");
@@ -95,10 +108,8 @@ $("#variant").on("change", function () {
   }
 
   // Fetch the Pokémon's data for the selected variant or species
-  fetchAndDisplayBaseStats(pokemonName);
+  fetchAndDisplayBaseStats(pokemonName)
 });
-
-
 var level = document.getElementById("level");
 level.addEventListener("input", function (e) {
   var max = parseInt(e.target.max);

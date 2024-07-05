@@ -14,6 +14,15 @@ level.addEventListener("input", function (e) {
   if (value < min) {
     e.target.value = min;
   }
+
+  calculateTotal("hp");
+  calculateTotal("attack");
+  calculateTotal("defense");
+  calculateTotal("special-attack");
+  calculateTotal("special-defense");
+  calculateTotal("speed");
+
+
 });
 
 level.addEventListener("blur", function (e) {
@@ -148,21 +157,10 @@ function hpCurFunc() {
   if (validHP !== currentHP) {
     hpCurElement.setAttribute("value", validHP);
   }
-
   // Calculate the percentage of the current HP
   let hpPercentage = validHP / maxHP;
-
   // Update the progress bar value
   bar.animate(hpPercentage); // Number from 0.0 to 1.0
-
-  // Set the color of the progress bar based on the percentage
-  /*if (hpPercentage <= 0.2) {
-    bar.path.setAttribute("stroke", "red");
-  } else if (hpPercentage > 0.2 && hpPercentage <= 0.5) {
-    bar.path.setAttribute("stroke", "yellow");
-  } else {
-    bar.path.setAttribute("stroke", "green");
-  }*/
 }
 
 const observer = new MutationObserver(hpCurFunc);
@@ -170,6 +168,33 @@ const observer = new MutationObserver(hpCurFunc);
 hpCurFunc();
 
 observer.observe(hpCurElement, {
+  attributes: true,
+  attributeFilter: ["value"],
+});
+
+function hpMaxFunc() {
+  let currentHP = parseInt(hpCurElement.getAttribute("value"));
+  let maxHP = parseInt(hpMaxInput.getAttribute("value"));
+
+  // Ensure hpCur doesn't exceed hpMax or go below 0
+  let validHP = Math.max(0, currentHP);
+  validHP = Math.min(maxHP, validHP);
+
+  // Update hpCur if it's not within the valid range
+  if (validHP !== currentHP) {
+    hpCurElement.setAttribute("value", validHP);
+  }
+  // Calculate the percentage of the current HP
+  let hpPercentage = validHP / maxHP;
+  // Update the progress bar value
+  bar.animate(hpPercentage); // Number from 0.0 to 1.0
+}
+
+const newobserver = new MutationObserver(hpMaxFunc);
+
+hpMaxFunc();
+
+newobserver.observe(hpMaxInput, {
   attributes: true,
   attributeFilter: ["value"],
 });

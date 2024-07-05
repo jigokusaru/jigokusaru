@@ -5,12 +5,12 @@ async function calculateTotal(stat) {
   var base = Number(
     document.querySelector("." + stat + ".base").getAttribute("value")
   );
-  var lvl = Number(level.getAttribute("value"));
+  var lvl = Number(level.value);
   var iv = Number(
-    document.querySelector("." + stat + ".ivs").getAttribute("value")
+    document.querySelector("." + stat + ".ivs").value
   );
   var ev = Number(
-    document.querySelector("." + stat + ".evs").getAttribute("value")
+    document.querySelector("." + stat + ".evs").value
   );
   var species = document.querySelector(".species").value;
 
