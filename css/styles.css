@@ -39,7 +39,7 @@ header {
   font-family: "PKMN RBYGSC", sans-serif;
   font-size: 1.5em !important;
   width: 100% !important;
-  box-sizing: content-box !important;
+  box-sizing: border-box !important;
   height: auto !important;
   margin-right: 1em !important;
   background-color: white !important;
@@ -55,6 +55,11 @@ header {
   padding: 0.5em !important;
   font-family: "PKMN RBYGSC", sans-serif;
   font-size: 1.5em !important;
+}
+
+#logo{
+  width: 20%;
+  height: auto;
 }
 
 .content {
@@ -97,17 +102,17 @@ header {
 
 .inputs #variant {
   display: none; /* Hide the variant select box */
-  margin-left: 2em;
+  margin-left: 1em;
   margin-right: 0em;
 }
 .inputs #nature {
-  margin-left: 2em;
+  margin-left: 1em;
 }
 
 .hp-bar-container {
   position: relative;
   width: 50%;
-  height: auto;
+  height:auto;
   margin-top: 0.5em;
   align-self: center;
   margin-right: 2em;
@@ -123,8 +128,8 @@ header {
   width: 61%; /* Adjust the width as needed */
   height: auto; /* Adjust the height as needed */
   position: relative;
-  top: -4.8em; /* Adjust the vertical position as needed */
-  left: 10.4em;
+  top: -5.1em; /* Adjust the vertical position as needed */
+  left: 11.4em;
 }
 
 .pokeball-shapes {
@@ -251,7 +256,7 @@ header {
   height: 30%; /* Adjust as needed */
   transform: translate(-50%, -50%);
   padding-top: 2em;
-  font-size: 1.3em;
+  font-size: 1em;
 }
 
 .input-field.bottom-left {
@@ -294,8 +299,8 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 2.5em;
   height: auto;
   position: absolute;
-  top: -8.7em;
-  left: 27em;
+  top: -9.3em;
+  left: 30em;
 }
 
 .select2-selection--single.gender .select2-selection__arrow {
@@ -303,7 +308,6 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 #level {
   bottom: 0em; /* Adjust as needed */
-  right: -2em; /* Adjust as needed */
   font-size: 1.8em;
   font-family: "PKMN RBYGSC", sans-serif;
   text-align: left;
@@ -311,7 +315,7 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: transparent;
   position: absolute;
   top: -0.2em;
-  left: 11.5em;
+  left: 12.5em;
   width: 3em;
   height: 1em;
 }

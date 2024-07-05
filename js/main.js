@@ -38,6 +38,34 @@ window.onload = function () {
   }, 5000);
 };
 
+async function updateAbilities(pokemonName) {
+  // Fetch the Pokémon data
+  const pokemonData = await P.getPokemonByName(pokemonName);
+
+  // Get the abilities
+  const abilities = pokemonData.abilities.map((ability) => {
+    return ability.ability.name
+      .split("-")
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+      .join(" ");
+  });
+
+  console.log(abilities);
+
+  // Get the select element for the abilities
+  const abilitySelectElement = document.getElementById("ability");
+
+  // Clear any existing options
+  abilitySelectElement.innerHTML = "";
+
+  // Add an option for each ability
+  for (let ability of abilities) {
+    let option = document.createElement("option");
+    option.value = ability;
+    option.text = ability;
+    abilitySelectElement.add(option);
+  }
+}
 
 $("#species").on("change", async function () {
   const speciesName = this.value;
@@ -58,7 +86,8 @@ $("#species").on("change", async function () {
       variantSelectElement.style.display = "none";
     }
     // Fetch and display base stats for the main form of the species
-    fetchAndDisplayBaseStats(speciesName)
+    fetchAndDisplayBaseStats(speciesName);
+    updateAbilities(speciesName);
   });
 
   const maleGenderInfo = await P.getGender("male");
@@ -108,8 +137,10 @@ $("#variant").on("change", function () {
   }
 
   // Fetch the Pokémon's data for the selected variant or species
-  fetchAndDisplayBaseStats(pokemonName)
+  fetchAndDisplayBaseStats(pokemonName);
+  updateAbilities(pokemonName);
 });
+
 var level = document.getElementById("level");
 level.addEventListener("input", function (e) {
   var max = parseInt(e.target.max);
