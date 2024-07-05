@@ -1,6 +1,7 @@
 // eventListeners.js
 import { calculateTotal } from "./statCalculations.js";
-import { bar } from "./progressBar.js"
+import { bar } from "./progressBar.js";
+import { P } from "./pokedexData.js";
 
 var level = document.getElementById("level");
 level.addEventListener("input", function (e) {
@@ -21,8 +22,6 @@ level.addEventListener("input", function (e) {
   calculateTotal("special-attack");
   calculateTotal("special-defense");
   calculateTotal("speed");
-
-
 });
 
 level.addEventListener("blur", function (e) {
@@ -62,13 +61,44 @@ var nature = document.getElementById("nature");
 
 // Add an event listener for the 'change' event
 nature.addEventListener("change", function () {
-  // Recalculate the total for each stat when the nature changes
-  calculateTotal("hp");
-  calculateTotal("attack");
-  calculateTotal("defense");
-  calculateTotal("special-attack");
-  calculateTotal("special-defense");
-  calculateTotal("speed");
+  // Get the nature from the select element
+  var natureName = nature.value;
+
+  // Use the P.getNatureByName() function to get the nature effects
+  P.getNatureByName(natureName).then(function (response) {
+    // Reset all stat colors to black
+    var stats = [
+      "hp",
+      "attack",
+      "defense",
+      "special-attack",
+      "special-defense",
+      "speed",
+    ];
+    stats.forEach(function (stat) {
+      document.querySelector("." + stat + ".base").style.color = "black";
+    });
+
+    // Set the color of the increased and decreased stats
+    if (response.increased_stat) {
+      document.querySelector(
+        "." + response.increased_stat.name + ".base"
+      ).style.color = "red";
+    }
+    if (response.decreased_stat) {
+      document.querySelector(
+        "." + response.decreased_stat.name + ".base"
+      ).style.color = "blue";
+    }
+
+    // Recalculate the total for each stat when the nature changes
+    calculateTotal("hp");
+    calculateTotal("attack");
+    calculateTotal("defense");
+    calculateTotal("special-attack");
+    calculateTotal("special-defense");
+    calculateTotal("speed");
+  });
 });
 
 // Select the node that will be observed for mutations
