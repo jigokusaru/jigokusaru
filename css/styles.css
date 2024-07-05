@@ -32,7 +32,7 @@ header {
   flex-direction: column; /* Stack elements vertically */
 }
 
-.select2-container .select2-selection--single {
+.select2-selection--single.species {
   border: 2px solid #000 !important;
   border-bottom: 3px solid #000 !important;
   padding: 0.5em !important;
@@ -43,6 +43,7 @@ header {
   height: auto !important;
   margin-right: 1em !important;
   background-color: white !important;
+  color: #000 !important;
 }
 
 .select2-dropdown {
@@ -94,16 +95,22 @@ header {
   background-color: white; /* Set background to transparent */
 }
 
-.inputs #varient {
+.inputs #variant {
   display: none; /* Hide the variant select box */
+  margin-left: 2em;
+  margin-right: 0em;
+}
+.inputs #nature {
   margin-left: 2em;
 }
 
 .hp-bar-container {
   position: relative;
-  width: 70%;
-  height: 6em;
+  width: 50%;
+  height: auto;
   margin-top: 0.5em;
+  align-self: center;
+  margin-right: 2em;
 }
 
 .hp-bar {
@@ -112,39 +119,12 @@ header {
   display: block;
 }
 
-.progress-bar {
-  position: absolute;
-  top: 40%; /* Adjust vertically as needed */
-  left: 31.4%; /* Adjust horizontally as needed */
-  height: 10%; /* Adjust height of the progress bar */
-  width: 53.2%; /* Adjust the width based on progress */
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: none; /* This removes the border */
-}
-
-/* This will make the bar transparent */
-progress::-webkit-progress-bar {
-  background-color: transparent;
-}
-
-progress::-moz-progress-bar {
-  background-color: transparent;
-}
-
-/* This will make the progress part green */
-progress::-webkit-progress-value {
-  background-color: #ffaf00;
-}
-
-progress::-moz-progress-bar {
-  background-color: #ffaf00;
-}
-
-/* Firefox specific styles */
-progress {
-  background-color: transparent;
+#progress {
+  width: 61%; /* Adjust the width as needed */
+  height: auto; /* Adjust the height as needed */
+  position: relative;
+  top: -4.8em; /* Adjust the vertical position as needed */
+  left: 10.4em;
 }
 
 .pokeball-shapes {
@@ -219,15 +199,15 @@ progress {
 
 .bottom-left {
   transform: rotate(45deg);
-  bottom: -0.5em; /* Adjust as needed */
+  bottom: 0em; /* Adjust as needed */
   left: -1em; /* Adjust as needed */
   font-size: 1.5em;
 }
 
 .bottom-right {
   transform: rotate(-45deg);
-  bottom: -0.5em; /* Adjust as needed */
-  right: -1em; /* Adjust as needed */
+  bottom: 0em; /* Adjust as needed */
+  right: -2em; /* Adjust as needed */
   font-size: 1.5em;
 }
 .stat {
@@ -253,24 +233,25 @@ progress {
 }
 
 .textbox.top-half {
-  top: 0.5em;
-  left: 0em;
+  top: -0.5em;
+  left: -0.05em;
   width: 100%;
   height: 50%;
   font-size: 1.5em;
+  text-align: center;
 }
 
 .textbox.center-circle {
   position: absolute;
   background-color: transparent;
   border: none;
-  top: 50%;
+  top: 35%;
   left: 50%;
   width: 30%; /* Adjust as needed */
   height: 30%; /* Adjust as needed */
   transform: translate(-50%, -50%);
   padding-top: 2em;
-  font-size: 0.9em;
+  font-size: 1.3em;
 }
 
 .input-field.bottom-left {
@@ -297,4 +278,201 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.base {
+  font-size: 25px;
+}
+
+.gender {
+  width: 2em;
+  height: auto;
+}
+.select2-container--default .select2-selection--single.gender {
+  border: none !important;
+  background-color: transparent !important;
+  width: 2.5em;
+  height: auto;
+  position: absolute;
+  top: -8.7em;
+  left: 27em;
+}
+
+.select2-selection--single.gender .select2-selection__arrow {
+  display: none;
+}
+#level {
+  bottom: 0em; /* Adjust as needed */
+  right: -2em; /* Adjust as needed */
+  font-size: 1.8em;
+  font-family: "PKMN RBYGSC", sans-serif;
+  text-align: left;
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: -0.2em;
+  left: 11.5em;
+  width: 3em;
+  height: 1em;
+}
+#level:focus {
+  outline: none;
+}
+.nature {
+  width: 1em;
+}
+
+#hpCur {
+  border: none;
+  background-color: transparent;
+  font-size: 1.4em;
+  font-family: "PKMN RBYGSC", sans-serif;
+  text-align: right;
+  position: absolute;
+  top: 2.21em;
+  left: 4.5em;
+  width: 7em;
+  height: auto;
+}
+#hpCur:focus {
+  outline: none;
+}
+
+#hpMax {
+  border: none;
+  background-color: transparent;
+  font-size: 1.4em;
+  font-family: "PKMN RBYGSC", sans-serif;
+  text-align: right;
+  position: absolute;
+  top: 2.21em;
+  left: 15em;
+  width: 7em;
+  height: auto;
+}
+#hpMax:focus {
+  outline: none;
+}
+
+.hp-info-container {
+  display: flex;
+  flex-direction: row; /* Set the flex direction to row */
+}
+.button-container {
+  margin-top: 1.5em;
+}
+.hp-button {
+  font-size: 1.4em;
+  font-family: "PKMN RBYGSC", sans-serif;
+  align-self: left;
+  position: relative;
+  top: 3em;
+  margin: 0.2em;
+}
+#sixteenth {
+  top: 1em;
+}
+#eighth {
+  left: -1em;
+  top: 3.5em;
+}
+#fourth {
+  top: 5em;
+}
+#third {
+  left: 1em;
+  top: 3.5em;
+}
+
+#half {
+  top: 1em;
+}
+
+#apply-stats {
+  top: 5em;
+}
+
+#stat-amount {
+  position: relative;
+  top: 3em;
+  left: 5.2em;
+  border: 2px solid #000;
+  font-family: "PKMN RBYGSC", sans-serif;
+  font-size: 1.5em;
+  width: 5em;
+  height: auto;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  top: 1em;
+  left: 14em;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider  {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+  content: "+"; /* Display "-" for the slider element */
+  font-family: "PKMN RBYGSC", sans-serif; /* Use the custom font */
+  font-size: 1.5em;
+  text-align: center;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+  text-align: center;
+  justify-content: center;
+}
+
+.slider.round:before {
+  content: "-"; /* Display "-" for the slider element */
+  font-family: "PKMN RBYGSC", sans-serif; /* Use the custom font */
+  border-radius: 50%;
+  text-align: center;
 }

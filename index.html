@@ -19,16 +19,54 @@
           <div class="input-container">
             <div class="inputs">
               <input type="text" placeholder="Name" />
-              <select id="species">
-                <option value="" disabled selected>Select A Pokémon</option>
+              <select id="species" class="species">
+                <option value="" disabled selected>Pokémon</option>
               </select>
-              <select id="varient">
-                <option value="" disabled selected>Select a Variant</option>
+              <select id="variant">
+                <option value="" disabled selected>Variant</option>
+              </select>
+              <select id="nature">
+                <option value="" disabled selected>Nature</option>
               </select>
             </div>
-            <div class="hp-bar-container">
-              <img src="images/HPbar.png" alt="HP Bar" class="hp-bar" />
-              <progress class="progress-bar" value="50" max="100"></progress>
+            <div>
+              <div class="hp-info-container">
+                <div class="hp-bar-container">
+                  <img src="images/HPbar.png" alt="HP Bar" class="hp-bar" />
+                  <div id="progress"></div>
+                  <input
+                    type="number"
+                    id="level"
+                    class="Levels"
+                    value="1"
+                    min="1"
+                    max="100"
+                  />
+                  <input type="number" id="hpCur" value="0" readonly />
+                  <input type="number" id="hpMax" value="1" readonly />
+                  <select id="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
+                </div>
+                <div id="hp-mod">
+                  <div class="stat-modifier">
+                    <label class="switch">
+                      <input type="checkbox" id="stat-modifier-toggle" />
+                      <span class="slider round"></span>
+                    </label>
+                    <input type="number" id="stat-amount" min="0" />
+                    <button class="hp-button" id="apply-stats">Apply</button>
+                  </div>
+                  <div class="button-container">
+                    <button id="sixteenth" class="hp-button">1/16</button>
+                    <button id="eighth" class="hp-button">1/8</button>
+                    <button id="fourth" class="hp-button">1/4</button>
+                    <button id="third" class="hp-button">1/3</button>
+                    <button id="half" class="hp-button">1/2</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -43,19 +81,21 @@
             <div class="label bottom-left">IVs</div>
             <div class="label bottom-right">EVs</div>
             <div class="label stat">HP</div>
-            <textarea class="textbox top-half hp total" readonly></textarea>
-            <textarea class="textbox center-circle hp base" readonly></textarea>
-            <input
-              type="number"
-              min="0"
-              max="252"
-              class="input-field bottom-left IVs"
-            />
+            <input class="textbox top-half hp total" readonly />
+            <input class="textbox center-circle hp base" readonly />
             <input
               type="number"
               min="0"
               max="31"
-              class="input-field bottom-right EVs"
+              value="0"
+              class="input-field bottom-left hp ivs"
+            />
+            <input
+              type="number"
+              min="0"
+              max="252"
+              value="0"
+              class="input-field bottom-right hp evs"
             />
           </div>
           <div class="pokeball">
@@ -67,21 +107,22 @@
             <div class="center-line vertical"></div>
             <div class="label bottom-left">IVs</div>
             <div class="label bottom-right">EVs</div>
-            <textarea class="textbox top-half" readonly></textarea>
-            <textarea class="textbox center-circle" readonly></textarea>
+            <div class="label stat">ATK</div>
+            <input class="textbox top-half attack total" readonly />
+            <input class="textbox center-circle attack base" readonly />
             <input
-              id="IVs"
-              type="number"
-              min="0"
-              max="252"
-              class="input-field bottom-left"
-            />
-            <input
-              id="EVs"
               type="number"
               min="0"
               max="31"
-              class="input-field bottom-right"
+              value="0"
+              class="input-field bottom-left attack ivs"
+            />
+            <input
+              type="number"
+              min="0"
+              max="252"
+              value="0"
+              class="input-field bottom-right attack evs"
             />
           </div>
           <div class="pokeball">
@@ -93,21 +134,22 @@
             <div class="center-line vertical"></div>
             <div class="label bottom-left">IVs</div>
             <div class="label bottom-right">EVs</div>
-            <textarea class="textbox top-half" readonly></textarea>
-            <textarea class="textbox center-circle" readonly></textarea>
+            <div class="label stat">DEF</div>
+            <input class="textbox top-half defense total" readonly />
+            <input class="textbox center-circle defense base" readonly />
             <input
-              id="IVs"
-              type="number"
-              min="0"
-              max="252"
-              class="input-field bottom-left"
-            />
-            <input
-              id="EVs"
               type="number"
               min="0"
               max="31"
-              class="input-field bottom-right"
+              value="0"
+              class="input-field bottom-left defense ivs"
+            />
+            <input
+              type="number"
+              min="0"
+              max="252"
+              value="0"
+              class="input-field bottom-right defense evs"
             />
           </div>
           <div class="pokeball">
@@ -119,21 +161,22 @@
             <div class="center-line vertical"></div>
             <div class="label bottom-left">IVs</div>
             <div class="label bottom-right">EVs</div>
-            <textarea class="textbox top-half" readonly></textarea>
-            <textarea class="textbox center-circle" readonly></textarea>
+            <div class="label stat">Sp.ATK</div>
+            <input class="textbox top-half special-attack total" readonly />
+            <input class="textbox center-circle special-attack base" readonly />
             <input
-              id="IVs"
-              type="number"
-              min="0"
-              max="252"
-              class="input-field bottom-left"
-            />
-            <input
-              id="EVs"
               type="number"
               min="0"
               max="31"
-              class="input-field bottom-right"
+              value="0"
+              class="input-field bottom-left special-attack ivs"
+            />
+            <input
+              type="number"
+              min="0"
+              max="252"
+              value="0"
+              class="input-field bottom-right special-attack evs"
             />
           </div>
           <div class="pokeball">
@@ -145,21 +188,25 @@
             <div class="center-line vertical"></div>
             <div class="label bottom-left">IVs</div>
             <div class="label bottom-right">EVs</div>
-            <textarea class="textbox top-half" readonly></textarea>
-            <textarea class="textbox center-circle" readonly></textarea>
+            <div class="label stat">Sp.DEF</div>
+            <input class="textbox top-half special-defense total" readonly />
             <input
-              id="IVs"
-              type="number"
-              min="0"
-              max="252"
-              class="input-field bottom-left"
+              class="textbox center-circle special-defense base"
+              readonly
             />
             <input
-              id="EVs"
               type="number"
               min="0"
               max="31"
-              class="input-field bottom-right"
+              value="0"
+              class="input-field bottom-left special-defense ivs"
+            />
+            <input
+              type="number"
+              min="0"
+              max="252"
+              value="0"
+              class="input-field bottom-right special-defense evs"
             />
           </div>
           <div class="pokeball">
@@ -171,21 +218,22 @@
             <div class="center-line vertical"></div>
             <div class="label bottom-left">IVs</div>
             <div class="label bottom-right">EVs</div>
-            <textarea class="textbox top-half" readonly></textarea>
-            <textarea class="textbox center-circle" readonly></textarea>
+            <div class="label stat">SPD</div>
+            <input class="textbox top-half speed total" readonly />
+            <input class="textbox center-circle speed base" readonly />
             <input
-              id="IVs"
-              type="number"
-              min="0"
-              max="252"
-              class="input-field bottom-left"
-            />
-            <input
-              id="EVs"
               type="number"
               min="0"
               max="31"
-              class="input-field bottom-right"
+              value="0"
+              class="input-field bottom-left speed ivs"
+            />
+            <input
+              type="number"
+              min="0"
+              max="252"
+              value="0"
+              class="input-field bottom-right speed evs"
             />
           </div>
         </div>
@@ -194,6 +242,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js"></script>
-    <script src="js/script.js"></script>
+    <script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/0.5.6/dist/progressbar.js"></script>
+    <script type="module" src="JS/pokedexData.js"></script>
+    <script type="module" src="JS/domManipulation.js"></script>
+    <script type="module" src="JS/statCalculations.js"></script>
+    <script type="module" src="JS/eventListeners.js"></script>
+    <script type="module" src="JS/main.js"></script>
+    <script type="module" src="JS/progressBar.js"></script>
   </body>
 </html>
